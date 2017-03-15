@@ -7,6 +7,7 @@
    
    </head>
 <body>
+
     <!--  wrapper -->
     <div id="wrapper">
         <!-- navbar top -->
@@ -135,7 +136,8 @@
         </div>
     <div class="panel-body">
      
-   <form>
+<form>
+
     <div class="form-group">
    
     <div class="form-group">
@@ -197,7 +199,13 @@
     </span>
      </div>
 
-    <input type="submit" name="guardar" value="Guardar" />
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+
+    <%= button_to 'Guardar', controller: 'admin', action: 'guardarv', method: :post %>
     
     </div>
 
