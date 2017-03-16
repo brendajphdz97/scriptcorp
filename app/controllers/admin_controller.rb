@@ -3,16 +3,16 @@ class AdminController < ApplicationController
  
   def listavestido
 
-    uri = URI.parse('https://ellasboutique.000webhostapp.com/venta/viewAll.php')
+    uri = URI.parse('https://ellasboutique.000webhostapp.com/vestido/viewAll.php')
 
-    descripcion= params[:des]
+    descripcion= params[:descripcion]
     estilo= params[:estilo]
     talla= params[:talla]
     precio= params[:precio]
     cantidad= params[:cantidad]
-    imagen= params[:img]
+    imagen= params[:imagen]
 
-    params= {:des => descripcion, :estilo => estilo,:talla => talla,:precio => precio,:cantidad => cantidad,:img => imagen}
+    params= {:descripcion => descripcion, :estilo => estilo,:talla => talla,:precio => precio,:cantidad => cantidad,:imagen => imagen}
     uri.query = URI.encode_www_form(params)
 
     
@@ -23,20 +23,24 @@ class AdminController < ApplicationController
     res = http.request(request)
 
    
-    object = res.body if res.is_a?(Net::HTTPSuccess) 
+    respuesta = res.body if res.is_a?(Net::HTTPSuccess) 
 
-    object = JSON.parse(respuesta)
+    $result = JSON.parse(respuesta)
 
-    #if object.length >= 0 then
+     if $result then
     
      
    
       
-    #else 
+    else 
        
      
-    #end
+    end
+
+  
   end
+
+  
 
   def idvestido
   end
