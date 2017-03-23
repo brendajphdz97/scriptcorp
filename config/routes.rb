@@ -19,11 +19,15 @@ Rails.application.routes.draw do
 
   post 'admin/guardarv'
 
+  post 'admin/idvestido'
+
   post 'login/create'
 
   post 'login/destroy'
 
   get 'login/index'
+
+  post 'admin/borrarv'
 
 
  
