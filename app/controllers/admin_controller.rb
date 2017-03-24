@@ -71,7 +71,15 @@ class AdminController < ApplicationController
     object = res.body if res.is_a?(Net::HTTPSuccess) 
 
   
-      $result = object
+       if object.length >= 0 then
+    
+      redirect_to admin_listavestido_url
+   
+      
+    else 
+       
+     
+    end
     
   end
 
