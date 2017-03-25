@@ -1,0 +1,40 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+    <ul class="nav" id="side-menu">
+      <!-- MENU CONFIGURACIÓN -->
+      <li  data-toggle="collapse" data-target="#configuracion" class="collapse">
+        <a>
+          <i class="fa fa-dashboard fa-fw glyphicon glyphicon-wrench"></i>
+          <span>&nbsp;&nbsp;Configuracion&nbsp;&nbsp;&nbsp;</span>
+          <span class="caret"></span>
+        </a>
+      </li>
+      <ul class="sub-menu collapse" id="configuracion">
+        <li><%= link_to "Lista", admin_listavestido_url %></li>
+        <li><%= link_to "Registro", admin_guardarv_url %></li>
+      </ul>
+      <!-- MENU VENTA -->
+      <li  data-toggle="collapse" data-target="#venta" class="collapse">
+        <a>
+          <i class="fa fa-dashboard fa-fw glyphicon glyphicon-usd"></i>
+          <span>&nbsp;&nbsp;Venta&nbsp;&nbsp;&nbsp;</span>
+          <span class="caret"></span>
+        </a>
+      </li>
+      <ul class="sub-menu collapse" id="venta">
+        <li><%= link_to "Pedidos", admin_listapedido_url %></li>
+      </ul>
+      <!-- MENU RENTA -->
+      <li  data-toggle="collapse" data-target="#renta" class="collapse">
+        <a>
+          <i class="fa fa-dashboard fa-fw glyphicon glyphicon-tag"></i>
+          <span>&nbsp;&nbsp;Renta&nbsp;&nbsp;&nbsp;</span>
+          <span class="caret"></span>
+        </a>
+      </li>
+      <ul class="sub-menu collapse" id="renta">
+        <li><a href="">Pedidos</a></li>
+      </ul>
+    </ul>
+  </div>
+</nav>

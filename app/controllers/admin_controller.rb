@@ -3,42 +3,23 @@ class AdminController < ApplicationController
 
   def listavestido
 
-    uri = URI.parse('https://ellasboutique.000webhostapp.com/vestido/viewAll.php')
-
-    descripcion= params[:descripcion]
-    estilo= params[:estilo]
-    talla= params[:talla]
-    precio= params[:precio]
-    cantidad= params[:cantidad]
-    imagen= params[:imagen]
-
-    params= {:descripcion => descripcion, :estilo => estilo,:talla => talla,:precio => precio,:cantidad => cantidad,:imagen => imagen}
+    if params[:id] == nil then
+      uri = URI.parse('https://ellasboutique.000webhostapp.com/vestido/viewAll.php')
+      #Como los parametros que se pasaron desde html se llaman igual que los que hay
+      #que mandar al api entonces se manda el objeto params directo
+      #descripcion= params[:descripcion]
+      #estilo= params[:estilo]
+      #talla= params[:talla]
+      #precio= params[:precio]
+      #cantidad= params[:cantidad]
+      #imagen= params[:imagen]
+      #params= {:descripcion => descripcion, :estilo => estilo,:talla => talla,:precio => precio,:cantidad => cantidad,:imagen => imagen}
+    else
+      uri = URI.parse('https://ellasboutique.000webhostapp.com/vestido/viewOne.php')
+      #id = params[:id]
+      #params= {:id => id}
+    end
     uri.query = URI.encode_www_form(params)
-
-
-    http = Net::HTTP.new(uri.host, uri.port)
-    request = Net::HTTP::Get.new(uri.request_uri)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    res = http.request(request)
-
-
-    respuesta = res.body if res.is_a?(Net::HTTPSuccess)
-
-    $result = respuesta #JSON.parse(respuesta)
-  end
-
-
-
-  def idvestido
-     uri = URI.parse('https://ellasboutique.000webhostapp.com/vestido/viewOne.php')
-
-    id= params[:id]
-
-
-    params= {:id => id}
-    uri.query = URI.encode_www_form(params)
-
 
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Get.new(uri.request_uri)
@@ -49,6 +30,12 @@ class AdminController < ApplicationController
     object = res.body if res.is_a?(Net::HTTPSuccess)
     $result = object
 
+  end
+
+
+
+  def idvestido
+    #No se requiere
   end
 
   def borrarv
@@ -67,20 +54,11 @@ class AdminController < ApplicationController
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     res = http.request(request)
 
-
-    object = res.body if res.is_a?(Net::HTTPSuccess)
-
-
-       if object.length >= 0 then
-
-      redirect_to admin_listavestido_url
-
-
-    else 
-
-
+    if res.is_a?(Net::HTTPSuccess) then
+      redirect_to admin_listavestido_url :notice => "Se elimino correctamente #{id}"
+    else
+      redirect_to admin_listavestido_url :notice => "Ocurrio un error"
     end
-
   end
 
   def actualizarv
