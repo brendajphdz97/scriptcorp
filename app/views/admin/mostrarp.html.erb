@@ -1,0 +1,49 @@
+<div id="wrapper">
+  <%= render 'header' %>
+  <%= render 'menu_nav' %>
+  <div id="page-wrapper">
+    <br>
+    <div class="row">
+      <div class="col-lg-12">
+         <h4><b><%= image_tag("pedido.png")+"  Detalle de Pedido" %></b></h4> 
+      </div>
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <!--h3 class="panel-title"></h3-->
+            <div class="row">
+              <div class="col-lg-4">
+               
+               
+              </div>
+            </div>
+        </div>
+      
+         <%= form_tag({controller: "admin", action: "mostrarp"}, method: "get" )  %>
+      
+      <div class="panel-body">
+        <div class="form-group">
+  
+    <div class="form-group">
+    <label for="des">Numero de pedido:</label>
+     <label name="id" value="<%= $result[0]['name'] %>"></label>
+   
+    </div>
+
+    <div class="col-xs-4">
+    <label for="ex3">Accion requerida:</label>
+    
+    </div>
+
+    
+
+    
+    </div>
+      </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</div>

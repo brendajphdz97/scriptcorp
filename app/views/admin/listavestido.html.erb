@@ -47,14 +47,15 @@
         table.pagesize = 10;
         table.tableclass = "table table-striped table-bordered";
         table.header = header;
-        table.emptyMsg = "No hay datos";
+        table.emptyMsg = "Ningún registro encontrado.";
         table.setParentId("renderVestidos");
         table.render = function(item, elemento) {
           item.createCell(elemento.imagen, undefined, undefined);
           item.createCell(elemento.descripcion, undefined, undefined);
           item.createCell(elemento.talla, undefined, undefined);
           item.createCell(elemento.precio, undefined, undefined);
-          item.createCell(undefined, undefined, '<form action="/admin/borrarv" method="get"><input type="hidden" id="id" name="id" value="'+elemento.Id+'"><input class="btn btn-danger glyphicon" type="submit" value="&#57376;"></form>');
+          item.createCell(undefined, undefined, '<form action="/admin/borrarv" method="get"><input type="hidden" id="id" name="id" value="'+elemento.Id+'"><input class="btn btn-danger glyphicon" type="submit" value="&#57376;"></form><form action="/admin/actualizarv" method="get"><input type="hidden" id="id" name="id" value="'+elemento.Id+'"><input class="btn btn-primary glyphicon" type="submit" value="&#x270f;"></form>');
+          
         }
         table.make();
         </script>

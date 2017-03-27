@@ -13,7 +13,10 @@ class AdminController < ApplicationController
   end
 
   def idvestido
-    #No se requiere
+    response = consume_api('https://ellasboutique.000webhostapp.com/vestido/viewOne.php', params, "GET")
+    string = response.body if response.is_a?(Net::HTTPSuccess)
+    JSON.parse(string)                        
+    $result = JSON.parse(string)
   end
 
   def borrarv
@@ -26,6 +29,28 @@ class AdminController < ApplicationController
   end
 
   def actualizarv
+    descripcion= params[:descripcion]
+    estilo= params[:estilo]
+    talla= params[:talla]
+    precio= params[:precio]
+    cantidad= params[:cantidad]
+    imagen = params[:imagen]
+
+    response = consume_api('https://ellasboutique.000webhostapp.com/vestido/updateVestido.php', {
+      :descripcion => descripcion,
+      :estilo => estilo,
+      :talla => talla,
+      :precio => precio,
+      :cantidad => cantidad,
+      :imagen => imagen
+    }, "POST")
+
+    case response
+      when Net::HTTPSuccess, Net::HTTPRedirection
+        #Ok
+      else
+        response.value
+    end
   end
 
   def guardarv
@@ -57,9 +82,22 @@ class AdminController < ApplicationController
   end
 
   def listapedido
+  
+     if params[:id] == nil then
+      # params: descripcion estilo talla precio cantidad imagen
+      response = consume_api('https://ellasboutique.000webhostapp.com/pedido/viewAll.php', params, "GET")
+    else
+      #params[:id]
+      response = consume_api('https://ellasboutique.000webhostapp.com/pedido/viewOne.php', params, "GET")
+    end
+    $result = response.body if response.is_a?(Net::HTTPSuccess)
   end
 
-  def buscarp
+  def mostrarp
+    
+    response = consume_api('https://ellasboutique.000webhostapp.com/pedido/viewOne.php', params, "GET")
+    string = response.body if response.is_a?(Net::HTTPSuccess)                       
+    $result = JSON.parse(string)
   end
 
 

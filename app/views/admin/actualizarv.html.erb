@@ -1,2 +1,98 @@
-<h1>Admin#actualizarv</h1>
-<p>Find me in app/views/admin/actualizarv.html.erb</p>
+<div id="wrapper">
+  <%= render 'header' %>
+  <%= render 'menu_nav' %>
+  <div id="page-wrapper">
+    <br>
+    <div class="row">
+      <div class="col-lg-12">
+         <h4><b><%= image_tag("guardar.png")+"  Registro" %></b></h4> 
+      </div>
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <!--h3 class="panel-title"></h3-->
+            <div class="row">
+              <div class="col-lg-4">
+                <%= form_tag({controller: "admin", action: "idvestido"}, method: "get" )  %>
+               
+              </form>
+            </div>
+        </form>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+   <%= $result["name"] %>
+    <div class="form-group">
+    <label for="des">Descripcion</label>
+    <input class="form-control input-lg" name="descripcion"  value="<%= $result["name"] %>" type="text" placeholder="Una descripcion breve del vestido">
+    </div>
+
+    <div class="col-xs-4">
+    <label for="ex3">Estilo</label>
+    <input class="form-control" name="estilo"  value="<%= $result["name"] %>" type="text">
+    </div>
+
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+
+    <div class="col-xs-2">
+    <label for="ex1">Talla</label>
+    <input class="form-control" name="talla"  value="<%= $result["name"] %>" type="text">
+    </div>
+
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     
+    <div class="col-xs-2">
+    <label for="ex2">Precio</label>
+    <input class="form-control" name="precio"  value="<%= $result["name"] %>" type="text" placeholder="MXN">
+    </div>
+
+       
+    <div class="col-xs-2">
+    <label for="ex4">Cantidad</label>
+    <input class="form-control" name="cantidad"  value="<%= $result["name"] %>" type="text" placeholder="0">
+    </div>
+
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+
+    <div class="media">
+    <div class="media-left media-middle">
+    <a href="#">
+      <img class="media-object" src="//68.cdn.pagina.mx/images/cp/site/store/str_prod_med.jpg" alt="...">
+    </a>
+    </div>
+    <div class="media-body">
+    <h5 class="media-heading">
+     <span class="add_image fileinput-button">
+    <i class="str_up"></i>
+    <span>Escoge una imagen</span>
+    <input type="file" name="imagen" value="<%= $result["name"] %>" id="imagen" />
+    </span>
+     </div>
+
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+
+    <%= button_to 'Actualizar', controller: 'admin', action: 'actualizarv', method: :post %>
+    
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

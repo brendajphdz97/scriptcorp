@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get 'admin/listapedido'
 
-  get 'admin/buscarp'
+  get 'admin/mostrarp'
 
   get 'admin/index'
 
@@ -21,11 +21,15 @@ Rails.application.routes.draw do
 
   post 'admin/idvestido'
 
+  post 'admin/actualizarv'
+
   post 'login/create'
 
   post 'login/destroy'
 
   get 'login/index'
+
+  get 'login/destroy'
 
 
   root :to => 'login#index'
