@@ -15,7 +15,7 @@ class AdminController < ApplicationController
   def idvestido
     response = consume_api('https://ellasboutique.000webhostapp.com/vestido/viewOne.php', params, "GET")
     string = response.body if response.is_a?(Net::HTTPSuccess)
-    JSON.parse(string)                        
+    JSON.parse(string)
     $result = JSON.parse(string)
   end
 
@@ -29,27 +29,40 @@ class AdminController < ApplicationController
   end
 
   def actualizarv
-    descripcion= params[:descripcion]
-    estilo= params[:estilo]
-    talla= params[:talla]
-    precio= params[:precio]
-    cantidad= params[:cantidad]
-    imagen = params[:imagen]
 
-    response = consume_api('https://ellasboutique.000webhostapp.com/vestido/updateVestido.php', {
-      :descripcion => descripcion,
-      :estilo => estilo,
-      :talla => talla,
-      :precio => precio,
-      :cantidad => cantidad,
-      :imagen => imagen
-    }, "POST")
+    if( params[:isUpdate] == 'Y') then
 
-    case response
-      when Net::HTTPSuccess, Net::HTTPRedirection
-        #Ok
-      else
-        response.value
+      id= params[:id]
+      descripcion= params[:descripcion]
+      estilo= params[:estilo]
+      talla= params[:talla]
+      precio= params[:precio]
+      cantidad= params[:cantidad]
+      imagen = params[:imagen]
+
+      response = consume_api('https://ellasboutique.000webhostapp.com/vestido/updateVestido.php', {
+        :id => id,
+        :descripcion => descripcion,
+        :estilo => estilo,
+        :talla => talla,
+        :precio => precio,
+        :cantidad => cantidad,
+        :imagen => imagen
+      }, "POST")
+
+      case response
+        when Net::HTTPSuccess, Net::HTTPRedirection
+          #ok
+          redirect_to admin_listavestido_url :notice => "Se actualizo correctamente #{id}"
+        else
+          #error
+        end
+
+    else
+      response = consume_api('https://ellasboutique.000webhostapp.com/vestido/viewOne.php', params, "GET")
+      string = response.body if response.is_a?(Net::HTTPSuccess)
+      $result = JSON.parse(string)
+      $id = params[:id];
     end
   end
 
@@ -82,7 +95,7 @@ class AdminController < ApplicationController
   end
 
   def listapedido
-  
+
      if params[:id] == nil then
       # params: descripcion estilo talla precio cantidad imagen
       response = consume_api('https://ellasboutique.000webhostapp.com/pedido/viewAll.php', params, "GET")
@@ -94,9 +107,9 @@ class AdminController < ApplicationController
   end
 
   def mostrarp
-    
+
     response = consume_api('https://ellasboutique.000webhostapp.com/pedido/viewOne.php', params, "GET")
-    string = response.body if response.is_a?(Net::HTTPSuccess)                       
+    string = response.body if response.is_a?(Net::HTTPSuccess)
     $result = JSON.parse(string)
   end
 
