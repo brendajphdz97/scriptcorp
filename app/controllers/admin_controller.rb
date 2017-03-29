@@ -68,27 +68,29 @@ class AdminController < ApplicationController
   end
 
   def guardarv
-    descripcion= params[:descripcion]
-    estilo= params[:estilo]
-    talla= params[:talla]
-    precio= params[:precio]
-    cantidad= params[:cantidad]
-    imagen = params[:imagen]
+    if params[:descripcion] != nil then
+      descripcion= params[:descripcion]
+      estilo= params[:estilo]
+      talla= params[:talla]
+      precio= params[:precio]
+      cantidad= params[:cantidad]
+      imagen = params[:imagen]
 
-    response = consume_api('https://ellasboutique.000webhostapp.com/vestido/insertVestido.php', {
-      :descripcion => descripcion,
-      :estilo => estilo,
-      :talla => talla,
-      :precio => precio,
-      :cantidad => cantidad,
-      :imagen => imagen
-    }, "POST")
+      response = consume_api('https://ellasboutique.000webhostapp.com/vestido/insertVestido.php', {
+        :descripcion => descripcion,
+        :estilo => estilo,
+        :talla => talla,
+        :precio => precio,
+        :cantidad => cantidad,
+        :imagen => imagen
+      }, "POST")
 
-    case response
-      when Net::HTTPSuccess, Net::HTTPRedirection
-         redirect_to admin_listavestido_url :notice => "Se registro correctamente #{id}"
-      else
-         #error
+      case response
+        when Net::HTTPSuccess, Net::HTTPRedirection
+           redirect_to admin_listavestido_url :notice => "Se registro correctamente #{id}"
+        else
+           #error
+      end
     end
   end
 
@@ -114,13 +116,13 @@ class AdminController < ApplicationController
   end
 
   def mostrarp
-    
+
     response = consume_api('https://ellasboutique.000webhostapp.com/pedido/viewOne.php', params, "GET")
     string = response.body if response.is_a?(Net::HTTPSuccess)
     $result = JSON.parse(string)
   end
 
- 
+
 
 
    def listar_imagenes
