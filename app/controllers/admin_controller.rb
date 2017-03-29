@@ -12,6 +12,7 @@ class AdminController < ApplicationController
     $result = response.body if response.is_a?(Net::HTTPSuccess)
   end
 
+
   def idvestido
     response = consume_api('https://ellasboutique.000webhostapp.com/vestido/viewOne.php', params, "GET")
     string = response.body if response.is_a?(Net::HTTPSuccess)
@@ -120,8 +121,8 @@ class AdminController < ApplicationController
     response = consume_api('https://ellasboutique.000webhostapp.com/pedido/viewOne.php', params, "GET")
     string = response.body if response.is_a?(Net::HTTPSuccess)
     $result = JSON.parse(string)
-  end
 
+  end
 
 
 
