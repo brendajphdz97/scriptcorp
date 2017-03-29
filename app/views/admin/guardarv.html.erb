@@ -22,7 +22,6 @@
         
 
 
-          <%= form_tag({controller: "admin", action: "guardarv"}, method: "post" )  %>
 
           <input type="hidden" name="Id" value="<%= $id %>"><!-- se debe pasar el id, de otro modo no sabra que registro modificar, este debe estar oculto-->
           <input type="hidden" name="isUpdate" value="Y"><!-- campo de truco para hacer que el metodo actualice -->
@@ -77,11 +76,11 @@
       </br></br></br></br></br>
       
     
-    <input type="submit" value="guardar" class="btn btn-primary">
+    <%= button_to 'Guardar', controller: 'admin', action: 'guardarv', method: :post %>
 
   </div>
 
-</form>
+
 
 </div>
 </div>
