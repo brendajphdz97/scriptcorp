@@ -86,9 +86,9 @@ class AdminController < ApplicationController
 
     case response
       when Net::HTTPSuccess, Net::HTTPRedirection
-        #Ok
+         redirect_to admin_listavestido_url :notice => "Se registro correctamente #{id}"
       else
-        response.value
+         #error
     end
   end
 

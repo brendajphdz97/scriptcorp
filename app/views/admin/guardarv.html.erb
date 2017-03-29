@@ -1,238 +1,91 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootsrtap Free Admin Template - SIMINTA | Admin Dashboad Template</title>
-   
-   </head>
-<body>
-
-    <!--  wrapper -->
-    <div id="wrapper">
-        <!-- navbar top -->
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
-            <!-- navbar-header -->
-            <div class="navbar-header">
-               
-                <a class="navbar-brand" href="index.html">
-                     <%= image_tag "logi.jpg" %>
-
-                     
-                </a>
-            </div>
-
-             <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
-                    <ul id="g-account-menu" class="dropdown-menu" role="menu">
-                       <li><a href="#"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
-                    </ul>
-                </li>
-                
-            </ul>
-        </div>
-
-
-           
-            <!-- end navbar-header -->
-       <!-- navbar-top-links -->
-           
-
-    </nav>
-        
-        <!-- end navbar top -->
-
-        <!-- navbar side -->
-        <nav class="navbar-default navbar-static-side" role="navigation">
-            <!-- sidebar-collapse -->
-            <div class="sidebar-collapse">
-                <!-- side-menu -->
-                <ul class="nav" id="side-menu">
-                    <li>
-                      
-                    </li>
-                   
-                    <li >
-                        
-                    </li>
-                    
-                <li  data-toggle="collapse" data-target="#op" class="collapse active">
-                  <a href="#"><i class="fa fa-dashboard fa-fw">
-                  <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp;&nbsp;</i>Configuracion &nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="op">
-                    
-                    <li>
-                                <a href="listavestido">Lista</a>
-                    </li>
-                    <li>
-                                <a href="guardarv">Registro</a>
-                    </li>
-                </ul>
-
-                 <li  data-toggle="collapse" data-target="#op1" class="collapse active">
-                  <a href="#"><i class="fa fa-bar-chart-o fa-fw">
-                  <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>&nbsp;&nbsp;</i>Pedidos&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="op1">
-                    
-                    <li>
-                                <a href="listapedido">Lista</a>
-                    </li>
-                
-                </ul>
-
-                 
-               
-
-                       
-                
-                <!-- end side-menu -->
-            </div>
-            <!-- end sidebar-collapse -->
-        </nav>
-        <!-- end navbar side -->
-        <!--  page-wrapper -->
-        <div id="page-wrapper">
-
-         
-
-            <div class="row">
-                <!-- Welcome -->
-
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                   
-                   
-                <div class="col-lg-12">
-
-                   
-      
-     <h4><b><%= image_tag("guardar.png")+"  Registro" %></b></h4> 
+<div id="wrapper">
+  <%= render 'header' %>
+  <%= render 'menu_nav' %>
+  <div id="page-wrapper">
+    <br>
+    <div class="row">
+      <div class="col-lg-12">
+        <h4><b><%= image_tag("guardar.png")+"  Registro" %></b></h4> 
+      </div>
+      <div class="col-lg-12">
         <div class="panel panel-default">
-            
-            <div class="panel-heading">
-            <h3 class="panel-title">
-            Informacion basica
-            </h3>
+          <div class="panel-heading">
+            <!--h3 class="panel-title"></h3-->
+            <div class="row">
+              <div class="col-lg-4">
+              
+          </div>
+        </form>
+      </div>
+      <div class="panel-body">
+
+        
+
+
+          <%= form_tag({controller: "admin", action: "guardarv"}, method: "post" )  %>
+
+          <input type="hidden" name="Id" value="<%= $id %>"><!-- se debe pasar el id, de otro modo no sabra que registro modificar, este debe estar oculto-->
+          <input type="hidden" name="isUpdate" value="Y"><!-- campo de truco para hacer que el metodo actualice -->
+
+          <div class="form-group">
+            <label for="des">Descripcion</label>
+            <input class="form-control input-lg" name="descripcion"  value="<%= $result[0]['descripcion'] %>" type="text" placeholder="Una descripcion breve del vestido">
+          </div>
+
+          <div class="col-xs-4">
+            <label for="ex3">Estilo</label>
+            <input class="form-control" name="estilo"  value="<%= $result[0]['estilo'] %>" type="text">
+          </div>
+
+        </br></br></br></br></br>
+
+        <div class="col-xs-2">
+          <label for="ex1">Talla</label>
+          <input class="form-control" name="talla"  value="<%= $result[0]['talla'] %>" type="text">
         </div>
-    <div class="panel-body">
-     
-<form>
 
-    <div class="form-group">
-   
-    <div class="form-group">
-    <label for="des">Descripcion</label>
-    <input class="form-control input-lg" name="descripcion"  value="<%= $result["name"] %>" type="text" placeholder="Una descripcion breve del vestido">
-    </div>
+      </br></br></br></br></br>
 
-    <div class="col-xs-4">
-    <label for="ex3">Estilo</label>
-    <input class="form-control" name="estilo"  value="<%= $result["name"] %>" type="text">
-    </div>
+      <div class="col-xs-2">
+        <label for="ex2">Precio</label>
+        <input class="form-control" name="precio"  value="<%= $result[0]['precio'] %>" type="text" placeholder="MXN">
+      </div>
 
-     <br>
-     <br>
-     <br>
-     <br>
-     <br>
 
-    <div class="col-xs-2">
-    <label for="ex1">Talla</label>
-    <input class="form-control" name="talla"  value="<%= $result["name"] %>" type="text">
-    </div>
+      <div class="col-xs-2">
+        <label for="ex4">Cantidad</label>
+        <input class="form-control" name="cantidad"  value="<%= $result[0]['cantidad'] %>" type="text" placeholder="0">
+      </div>
 
-     <br>
-     <br>
-     <br>
-     <br>
-     <br>
-     
-    <div class="col-xs-2">
-    <label for="ex2">Precio</label>
-    <input class="form-control" name="precio"  value="<%= $result["name"] %>" type="text" placeholder="MXN">
-    </div>
+    </br></br></br></br></br>
 
-       
-    <div class="col-xs-2">
-    <label for="ex4">Cantidad</label>
-    <input class="form-control" name="cantidad"  value="<%= $result["name"] %>" type="text" placeholder="0">
-    </div>
-
-     <br>
-     <br>
-     <br>
-     <br>
-     <br>
 
     <div class="media">
-    <div class="media-left media-middle">
-    <a href="#">
-      <img class="media-object" src="//68.cdn.pagina.mx/images/cp/site/store/str_prod_med.jpg" alt="...">
-    </a>
-    </div>
-    <div class="media-body">
-    <h5 class="media-heading">
-     <span class="add_image fileinput-button">
-    <i class="str_up"></i>
-    <span>Escoge una imagen</span>
-    <input type="file" name="imagen" id="imagen" />
-    </span>
-     </div>
+      <div class="media-left media-middle">
+        <a href="#">
+          <img class="media-object" src="//68.cdn.pagina.mx/images/cp/site/store/str_prod_med.jpg" alt="...">
+        </a>
+      </div>
+      <div class="media-body">
+          <span class="add_image fileinput-button">
+            <i class="str_up"></i>
+            <span>Escoge una imagen</span>
+            <input type="file" name="imagen" value="<%= $result[0]['imagen'] %>" id="imagen" />
+          </span>
+        </div>
 
-     <br>
-     <br>
-     <br>
-     <br>
-     <br>
-
-    <%= button_to 'Guardar', controller: 'admin', action: 'guardarv', method: :post %>
+      </br></br></br></br></br>
+      
     
-    </div>
+    <input type="submit" value="guardar" class="btn btn-primary">
 
-   
+  </div>
 
 </form>
- 
-      </div>
- 
-    </div>
 
-
-
-
-
-
-
-                </div>
-
-            </div>
-
-            
-                </div>
-            </div>
-
-
-         
-
-
-        </div>
-        <!-- end page-wrapper -->
-
-    </div>
-    <!-- end wrapper -->
-
-
-
-</body>
-
-</html>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
