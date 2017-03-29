@@ -19,6 +19,7 @@ class AdminController < ApplicationController
     $result = JSON.parse(string)
   end
 
+
   def borrarv
     response = consume_api('https://ellasboutique.000webhostapp.com/vestido/deleteVestido.php', params, "POST")
     if response.is_a?(Net::HTTPSuccess) then
@@ -92,6 +93,12 @@ class AdminController < ApplicationController
   end
 
   def borrarp
+     response = consume_api('https://ellasboutique.000webhostapp.com/vestido/deleteVestido.php', params, "POST")
+    if response.is_a?(Net::HTTPSuccess) then
+      redirect_to admin_listavestido_url :notice => "Se elimino correctamente #{params[:id]}"
+    else
+      redirect_to admin_listavestido_url :notice => "Ocurrio un error"
+    end
   end
 
   def listapedido
@@ -107,13 +114,13 @@ class AdminController < ApplicationController
   end
 
   def mostrarp
-
+    
     response = consume_api('https://ellasboutique.000webhostapp.com/pedido/viewOne.php', params, "GET")
     string = response.body if response.is_a?(Net::HTTPSuccess)
-    $result = JSON.parse(string)
+    $result = JSON.parse(string)
   end
 
-
+ 
 
 
    def listar_imagenes

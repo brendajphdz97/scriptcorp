@@ -5,7 +5,7 @@
     <br>
     <div class="row">
       <div class="col-lg-12">
-        <h4><b><%= image_tag("guardar.png")+"  Registro" %></b></h4>
+        <h4><b><%= image_tag("lapiz.png")+"  Editar" %></b></h4>
       </div>
       <div class="col-lg-12">
         <div class="panel panel-default">
@@ -13,16 +13,13 @@
             <!--h3 class="panel-title"></h3-->
             <div class="row">
               <div class="col-lg-4">
-                <!-- No entiendo para que creas aqui un formulario vacio , casi todo el codigo de esta parte es innecesario
-                <%= form_tag({controller: "admin", action: "idvestido"}, method: "get" )  %>
-
-              </form>
-            -->
+              
           </div>
         </form>
       </div>
       <div class="panel-body">
-        <div class="form-group"><!-- para que quieres este form group aqui???-->
+
+        
 
 
           <%= form_tag({controller: "admin", action: "actualizarv"}, method: "get" )  %>
@@ -62,6 +59,7 @@
 
     </br></br></br></br></br>
 
+
     <div class="media">
       <div class="media-left media-middle">
         <a href="#">
@@ -78,9 +76,8 @@
         </div>
 
       </br></br></br></br></br>
-      <!-- BASICO HTML so no usas un submit los datos del formulario no se enviaran
-      <%= button_to 'Actualizar', controller: 'admin', action: 'actualizarv', method: :post %>
-    -->
+      
+    
     <input type="submit" value="actualizar" class="btn btn-primary">
 
   </div>

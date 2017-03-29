@@ -37,7 +37,7 @@
         <div class="table-responsive" id="renderVestidos" datos="<%= $result %>"></div>
         <script type="text/javascript">
         header = new Header();
-        header.addCol("Imagen", "Imagen del producto");
+        header.addCol("Codigo", undefined);
         header.addCol("Descripcion", undefined);
         header.addCol("Talla", undefined);
         header.addCol("Precio", undefined);
@@ -50,7 +50,7 @@
         table.emptyMsg = "Ningún registro encontrado.";
         table.setParentId("renderVestidos");
         table.render = function(item, elemento) {
-          item.createCell(elemento.imagen, undefined, undefined);
+          item.createCell(elemento.Id, undefined, undefined);
           item.createCell(elemento.descripcion, undefined, undefined);
           item.createCell(elemento.talla, undefined, undefined);
           item.createCell(elemento.precio, undefined, undefined);

@@ -44,15 +44,13 @@ class LoginController < ApplicationController
 
 
   def destroy
-
-     @sesion = get_login();
-   if @sesion
-      logout();
+    
+    get_login();
+    logout();
        #Redirigir al login
-       redirect_to login_index_url
-   else
-     #Devuelve al panel
-      redirect_to admin_index_url
+      redirect_to login_index_path 
+   
+    
    end
 
 
@@ -68,4 +66,4 @@ class LoginController < ApplicationController
   end
 
 
-end
+

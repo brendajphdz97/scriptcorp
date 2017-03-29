@@ -24,26 +24,64 @@
       <div class="panel-body">
         <div class="form-group">
   
-    <div class="form-group">
-    <label for="des">Numero de pedido:</label>
-     <label name="id" value="<%= $result[0]['name'] %>"></label>
-   
-    </div>
+     <div class="ex1">
+    <label for="ex1">Numero de pedido:</label>
+    <%= $result[0]['id'] %>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 
-    <div class="col-xs-4">
-    <label for="ex3">Accion requerida:</label>
-    
-    </div>
-
+     <label for="ex2">Accion requerida:</label>
+    <%= $result[0]['tipo'] %>
+     </div>
+   <br>
     
 
+    <div class="ex2">
+    <label for="ex2">Cliente:</label>
+      <%= $result[0]['nombrecompleto'] %>
+    &nbsp; &nbsp; &nbsp; 
+      <label for="ex3">Contacto:</label>
+      <%= $result[0]['correo'] %>
+    </div>
+<br>
+   <div class="ex3">
+    <label for="ex3">Direccion:</label>
+      <%= $result[0]['direccion'] %>
+    </div>
     
+       <div class="ex4">
+    <label for="ex4">Cuidad:</label>
+      <%= $result[0]['ciudad'] %>
     </div>
-      </div>
 
-      </form>
+       <div class="ex5">
+    <label for="ex5">Estado:</label>
+      <%= $result[0]['estado'] %>
     </div>
+   </div>
   </div>
+</div>
+
+    </form>
+  </div>
+</div>
+  
+
+  <div class="panel panel-success">
+  <div class="panel-heading "><b>Mensaje</b> </div>
+  <div class="panel-body">
+     <%= $result[0]['mensaje'] %>
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading "><b>Pedido</b>   &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp;      <label for="ex5">Fecha de pedido:</label>  &nbsp; <%= $result[0]['fecha_pedido'] %></div>
+  <div class="panel-body">
+     <label for="ex5">Modelo:</label> <%= $result[0]['modelo'] %>   &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp;   <label for="ex5">Talla:</label><%= $result[0]['talla'] %>
+  </div>
+</div>
+
+
 </div>
 </div>
 </div>
